@@ -1,10 +1,5 @@
 ENTRADA
 1(pedra), 2(papel), 3(tesoura), 4(lagarto) ou 5(spock) como opcão dos dois jogadores.
-
-SAÍDA
-(empate, jog1 ou jog2)
-
-OBS:
 Tesoura corta papel
 Papel cobre pedra
 Pedra esmaga lagarto
@@ -15,3 +10,6 @@ Lagarto come papel
 Papel refuta Spock
 Spock vaporiza pedra
 Pedra amassa tesoura
+
+SAÍDA
+(empate, jog1 ou jog2)
