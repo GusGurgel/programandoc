@@ -17,17 +17,17 @@ bool ehVogal(char, const string /*vogais*/ = "aeiou");
 //Retorna quantidade de subStrings
 int cSubString(const string &);
 
+//Retorna quantidade de silabas
+int cSilabas(const string &);
+
+//Retorna parte da string que deve ser repetida
+string getRepPart(string &);
+
 //Pega as substrings de um arr
 string* getSub(string &, int &);
 
-//Retorna quantidade de vogais de uma string
-int cVogais(string &);
-
-//Retorna quantidade do conssoantes
-int cConsoantes(string &);
-
 //Retorna string formatada com gagueira
-//~ string fGagueira(string* &, const int &);
+string fGagueira(string* &, const int &);
 
 //----------------------------------------------------
 
@@ -96,59 +96,71 @@ string* getSub(string & str, int & size)
 	return ret;
 }
 
-int cVogais(string & str)
+int cSilabas(const string & str)
 {
 	int ret { 0 };
 	int str_length = str.length();
-	for(int i = 0; i < str_length; i++)
-	{
-		if(ehVogal(str[i]))	
-			ret++;
-	}
-	return ret;
-}
-
-int cConsoantes(string & str)
-{
-	int ret { 0 };
-	int str_length = str.length();
-	for(int i = 0; i < str_length; i++)
-	{
-		if(!ehVogal(str[i]))	
-			ret++;
-	}
-	return ret;
-}
-
-//~ string fGagueira(string* & str, const int & size)
-//~ {
-	//~ stringstream ret;
-	//~ for(int x { 0 } ; x < size; x++)
-	//~ {
-		//~ if(cVogais(str[x]) > 1 && cConsoantes(str[x]) > 1
-		//~ && !(!ehVogal(str[x][0]) && !ehVogal(str[x][1])))
-		//~ {
-			//~ string toAdd { str[x].substr(0, 2) };
-			//~ int start { 2 }; 
-			//~ if(ehVogal(str[x][0]))
-			//~ {
-				//~ toAdd = str[x][0];
-				//~ start = 1;
-			//~ }
-			//~ for(int i = 0; i < 3; i++)
-			//~ {
-				//~ ret << toAdd;
-			//~ }
-				
-			//~ ret << str[x].substr(start);				
-		//~ }
-		//~ else
-		//~ {
-			//~ ret << str[x];
-		//~ }
-		//~ if(x < (size-1))
-			//~ ret << " ";
-	//~ }
 	
-	//~ return ret.str();
-//~ }
+	for(int i = 0; i < str_length; i++)
+	{
+		if(i > str_length-2)
+			continue;
+		if(ehVogal(str[i]) && !ehVogal(str[i+1]))
+		{
+			//cout << str[i] << "<- Vogal;Nao Vogal ->" << str[i+1] << endl;
+			ret++;
+			i++;
+		}
+		else if(!ehVogal(str[i]) && ehVogal(str[i+1]))
+		{
+			//cout << str[i] << "<- Nao Vogal;Vogal ->" << str[i+1] << endl;
+			ret++;
+			i++;
+		}
+	}
+	return ret;
+}
+
+string getRepPart(string & str)
+{
+	int str_length = str.length();
+	stringstream ret;
+	if(ehVogal(str[0]))
+	{
+		ret << str[0];
+		return ret.str();
+	}
+	ret << str[0];
+	for(int i = 1; i < str_length; i++)
+	{
+		if(!ehVogal(str[i]) && ehVogal(str[i-1]) )
+		{
+			break;
+		}
+		ret << str[i];
+	}
+	return ret.str();
+}
+
+string fGagueira(string* & str, const int & size)
+{
+	stringstream ret; 
+	for(int x { 0 } ; x < size; x++)
+	{
+		if(cSilabas(str[x]) > 1)
+		{
+			ret << getRepPart(str[x]);
+			ret << getRepPart(str[x]);
+			ret << str[x];
+		}
+		else
+		{
+			ret << str[x];
+		}
+		if(x < size-1)
+		{
+			ret << " ";
+		}
+	}
+	return ret.str();
+}
