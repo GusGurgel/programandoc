@@ -41,7 +41,11 @@ void clearBuffer();
 void imprimeAluno(aluno&);
 
 //Imprime aluno com matrícula específica em um array
+<<<<<<< HEAD
 void imprimePorMatricula(int, aluno*&, int);
+=======
+void impremePorMatricula(int, aluno*&, int);
+>>>>>>> a5f47884f3508e2baff99ee44251902e111c4b37
 
 //----------------------------
 
@@ -62,7 +66,11 @@ int main()
 	
 	cin >> matricula;
 	
+<<<<<<< HEAD
 	imprimePorMatricula(matricula, alunos, times);
+=======
+	impremePorMatricula(matricula, alunos, times);
+>>>>>>> a5f47884f3508e2baff99ee44251902e111c4b37
 	
 	delete [] alunos;
 }
@@ -92,7 +100,11 @@ void imprimeAluno(aluno & alu)
 	cout << fixed << setprecision(1) << alu.nota << endl;
 }
 
+<<<<<<< HEAD
 void imprimePorMatricula(int matricula, aluno*& alunos, int size)
+=======
+void impremePorMatricula(int matricula, aluno*& alunos, int size)
+>>>>>>> a5f47884f3508e2baff99ee44251902e111c4b37
 {
 	for(int i = 0; i < size; i++)
 	{
