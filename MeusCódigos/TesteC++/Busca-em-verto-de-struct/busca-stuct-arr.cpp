@@ -25,15 +25,31 @@ struct aluno{
 
 //---------------------------
 //Declarações
+
+//Lê/cria uma struct aluno usando método de entrada cin
 aluno lerAluno(); 
 
+//Limpa o buffer do cin
 void clearBuffer();
+
+/* Imprime um único aluno 
+ * ----------------------
+ * Formatação:
+ * [NOME DO ALUNO]
+ * [MÉDIA DO ALUNO] <- FIXED && SETPRECISION(1)
+ */
 void imprimeAluno(aluno&);
+
+//Imprime aluno com matrícula específica em um array
+void imprimePorMatricula(int, aluno*&, int);
+
 //----------------------------
 
 int main()
 {
-	int times { 0 };
+	int times     { 0 };
+	int matricula { 0 };
+	
 	cin >> times;
 	clearBuffer();
 	
@@ -44,11 +60,9 @@ int main()
 		alunos[i] = lerAluno();
 	}
 	
+	cin >> matricula;
 	
-	for(int i = 0; i < times; i++)
-	{
-		imprimeAluno(alunos[i]);
-	}
+	imprimePorMatricula(matricula, alunos, times);
 	
 	delete [] alunos;
 }
@@ -76,4 +90,17 @@ void imprimeAluno(aluno & alu)
 {
 	cout << alu.nome << endl;
 	cout << fixed << setprecision(1) << alu.nota << endl;
+}
+
+void imprimePorMatricula(int matricula, aluno*& alunos, int size)
+{
+	for(int i = 0; i < size; i++)
+	{
+		if(alunos[i].matricula == matricula)
+		{
+			imprimeAluno(alunos[i]);
+			return;
+		}
+	}
+	cout << "NAO ENCONTRADA";
 }
