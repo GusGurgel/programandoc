@@ -29,7 +29,7 @@ peso,
 precoKG
 )	
 {	
-	this->taixaAdicional = taixaAdicional;
+	setTaixaAdicional(taixaAdicional);
 }
 
 double PacoteDoisDias::calcularCusto()
@@ -37,5 +37,9 @@ double PacoteDoisDias::calcularCusto()
 	return Pacote::calcularCusto() + taixaAdicional;
 }
 
-void PacoteDoisDias::setTaixaAdicional(float taixaAdicional) { this->taixaAdicional = taixaAdicional; } 
+void PacoteDoisDias::setTaixaAdicional(float taixaAdicional) { 
+	if(taixaAdicional <= 0)
+		taixaAdicional = 1;
+	this->taixaAdicional = taixaAdicional; 
+} 
 float PacoteDoisDias::getTaixaAdicional() { return this->taixaAdicional; }

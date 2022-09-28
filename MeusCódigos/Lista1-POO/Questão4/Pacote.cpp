@@ -24,8 +24,8 @@ float  precoKG)
 	this->cidadeRemetente		= cidadeRemetente;		
 	this->estadoRemetente		= estadoRemetente;		
 	this->cepRemetente			= cepRemetente;			
-	this->peso					= peso;					
-	this->precoKG				= precoKG;				
+	setPeso(peso);					
+	setPrecoKG(precoKG);				
 }
 
 double Pacote::calcularCusto()
@@ -63,8 +63,16 @@ string Pacote::getEstadoRemetente() { return this->estadoRemetente; }
 void   Pacote::setCepRemetente(string cepRemetente) { this->cepRemetente = cepRemetente; } 
 string Pacote::getCepRemetente() { return this->cepRemetente; }
 
-void   Pacote::setPeso(float peso) { this->peso = peso; } 
+void   Pacote::setPeso(float peso) {
+	if(peso <= 0)
+		peso = 1;
+	this->peso = peso;
+} 
 float  Pacote::getPeso() { return this->peso; }
 
-void   Pacote::setPrecoKG(float precoKG) { this->precoKG = precoKG; } 
+void   Pacote::setPrecoKG(float precoKG) { 
+	if(precoKG <= 0)
+	precoKG = 1;
+	this->precoKG = precoKG; 
+} 
 float  Pacote::getPrecoKG() { return this->precoKG; }

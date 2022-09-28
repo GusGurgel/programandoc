@@ -29,7 +29,7 @@ peso,
 precoKG
 )	
 {	
-	this->taixaAdicional = taixaAdicional;
+	setTaixaAdicional(taixaAdicional);
 }
 
 double PacoteOverNigth::calcularCusto()
@@ -37,5 +37,10 @@ double PacoteOverNigth::calcularCusto()
 	return Pacote::calcularCusto() + taixaAdicional * getPeso();
 }
 
-void PacoteOverNigth::setTaixaAdicional(float taixaAdicional) { this->taixaAdicional = taixaAdicional; } 
+void PacoteOverNigth::setTaixaAdicional(float taixaAdicional) 
+{ 
+	if(taixaAdicional <= 0)
+		taixaAdicional = 0;
+	this->taixaAdicional = taixaAdicional; 
+} 
 float PacoteOverNigth::getTaixaAdicional() { return this->taixaAdicional; }
