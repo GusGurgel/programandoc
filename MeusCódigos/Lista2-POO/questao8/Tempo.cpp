@@ -36,6 +36,15 @@ Tempo Tempo::sum(Tempo t){
 	return ret;
 }
 
+Tempo Tempo::sub(Tempo t)
+{
+	Tempo ret;
+	ret.setHoras(getHoras() - t.getHoras());
+	ret.setMinutos(getMinutos() - t.getMinutos());
+	ret.setSegundos(getSegundos() - t.getSegundos());
+	return ret;
+}
+
 void Tempo::setHoras(int horas) { this->horas = horas; } 
 int Tempo::getHoras() { return this->horas; }
 

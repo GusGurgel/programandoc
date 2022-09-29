@@ -21,6 +21,7 @@ public:
 	void sumThis(Tempo);
 	
 	Tempo sum(Tempo);
+	Tempo sub(Tempo);
 
 	void setHoras(int horas);
 	int getHoras();
