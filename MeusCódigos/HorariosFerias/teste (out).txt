@@ -1,0 +1,5 @@
+		\gi{10,5}{Acordando tarde e tomando café da manhã.}
+		\gi{11,5}{mexendo um pouco no Pc e almoçando.}
+		\gi{12,5}{subi para esperar marciana lavar meu quarto.}
+		\gi{13,5}{Vendo vídeos no YouTube deitado}
+		\gi{14,5}{Vendo vídeos no YouTube pelo computador}
