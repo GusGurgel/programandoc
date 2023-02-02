@@ -27,7 +27,7 @@ int main()
 	cout << "Digite o nome do arquivo: ";
 	cin >> filename;
 	
-	outfilename = filename.substr(0, filename.length()-4) /*remove .txt*/ + "(out).txt";
+	outfilename = filename.substr(0, filename.length()-4) /*remove .txt*/ + " (out).txt";
 	
 	file.open(filename);
 	file_out.open(outfilename);
