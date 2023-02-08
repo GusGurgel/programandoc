@@ -5,16 +5,14 @@
 
 using namespace std;
 
-struct horariro{
-	string mediaHora; 	/* Média do horário */
-	string desc;		/* Descrição do horário */
-};
-
 int main()
-{
-	system("chcp 65001 > nul"); /*Utilização de caracteres portugueses*/
+{	
+	#ifdef _WIN32
+		/*Utilização de caracteres com acentuação no windows*/
+		system("chcp 65001 > nul"); 
+	#endif
 	
-	string filename; 
+	string filename = "HorarioFerias.txt";
 	string outfilename;
 	string mediaHora;
 	string desc;
@@ -24,17 +22,22 @@ int main()
 
 	stringstream ss;
 	
-	cout << "Digite o nome do arquivo: ";
-	cin >> filename;
-	
-	outfilename = filename.substr(0, filename.length()-4) /*remove .txt*/ + " (out).txt";
-	
 	file.open(filename);
+	
+	/*Arquivo padrão não encontrado*/
+	if(!file.is_open()){
+		cout << "Digite o nome do arquivo: ";
+		cin >> filename;
+	
+		file.open(filename);
+	}
+	
+	outfilename = "out.txt";
 	file_out.open(outfilename);
 	
 	if(file.is_open() && file_out.is_open()){
 		while(file >> mediaHora && getline(file, desc)){
-			ss << "\t\t\\gi{" << mediaHora.substr(0, 4) << "}";
+			ss << "\t\t\\gi{" << stof(mediaHora) << "}";
 			ss << "{" << desc.substr(1) << "}" << endl;
 		}
 	}else{
