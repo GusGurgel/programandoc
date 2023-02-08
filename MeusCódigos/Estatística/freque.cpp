@@ -80,7 +80,7 @@ int main()
 	//Debugação das classes com suas devidas frequêcias distribuidas
 	for(freque f : arrF){
 		cout << tempI << ": " << f.min << " - " << f.max << " (" << f.med << ")" << " = "
-		 << f.freq << " (" << ((float)f.freq/vals_size*100) << ")" << endl;
+		 << f.freq << " (" << ((float)f.freq/vals_size*100) << "%)" << endl;
 		tempI++;
 	}
 	makeLine();
